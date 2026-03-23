@@ -45,7 +45,10 @@ export class Homepage implements OnInit {
         this.loadPosts();
         this.newPost = { title: '', content: '', author: '', onlyForRoster: false };
       },
-      error: (err) => alert("Alleen coaches mogen berichten plaatsen!")
+      error: (err) => {
+        alert("Alleen coaches mogen berichten plaatsen!")
+        console.log("Error: ", err)
+      }
     });
   }
 
