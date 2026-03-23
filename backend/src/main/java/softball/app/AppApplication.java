@@ -10,7 +10,6 @@ import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -44,7 +43,7 @@ public class AppApplication {
 					corsConfiguration.setAllowCredentials(true);
 					return corsConfiguration;
 				}))
-				.csrf(AbstractHttpConfigurer::disable)
+				.csrf(crsf -> crsf.disable())
 				.authorizeHttpRequests(auth -> auth
 						.requestMatchers(HttpMethod.GET, "/api/posts/**").permitAll()
 						.requestMatchers(HttpMethod.POST, "/api/posts/**").hasAnyAuthority("COACH", "ROLE_COACH")
