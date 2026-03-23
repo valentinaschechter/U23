@@ -40,6 +40,13 @@ public class ActivityController {
         return this.activityRepository.findAll();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Activity> getActivityById(@PathVariable Long id) {
+        return activityRepository.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     @PostMapping
     @Transactional
     public Activity createActivity(@RequestBody Activity activity) {

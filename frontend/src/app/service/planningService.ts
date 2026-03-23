@@ -17,6 +17,10 @@ export class PlanningService {
         return this.http.get<Activity[]>(this.activityUrl);
     }
 
+    getActivityById(id: number): Observable<Activity> {
+        return this.http.get<Activity>(`https://softballu23.eu/api/activities/${id}`);
+    }
+
     createActivity(activity: Activity): Observable<Activity> {
         return this.http.post<Activity>(this.activityUrl, activity);
     }

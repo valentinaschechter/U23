@@ -18,13 +18,21 @@ export class Activitydetails implements OnInit {
   activity: Activity | undefined;
 
   ngOnInit() {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.route.paramMap.subscribe(params => {
+      const id = Number(params.get('id'));
 
-    if (id) {
-      this.planningService.getActivities().subscribe(activities => {
-        this.activity = activities.find(a => Number(a.id) === id);
-      });
-    }
+      if (id) {
+        this.planningService.getActivityById(id).subscribe({
+          next: (data) => {
+            this.activity = data;
+            console.log("Activiteit succesvol geladen:", data);
+          },
+          error: (err) => {
+            console.error("Fout bij ophalen activiteit:", err);
+          }
+        });
+      }
+    });
   }
 
   get presentList() {
