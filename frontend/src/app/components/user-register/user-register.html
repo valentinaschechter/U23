@@ -19,6 +19,21 @@
         <option value="PARENT">Parent</option>
     </select>
 
+    @if (newUser.role === 'COACH') {
+    <div style="margin-top: 10px;">
+        <input type="password" [(ngModel)]="newUser.coachCode" name="coachCode" placeholder="Coach verificatiecode"
+            required>
+        <p style="font-size: 0.8em; color: gray;">
+            Alleen coaches hebben deze code.
+        </p>
+    </div>
+    }
+
+    <button type="submit"
+        [disabled]="newUser.password !== confirmPassword || newUser.username.length === 0 || (newUser.role === 'COACH' && !newUser.coachCode)">
+        Opslaan
+    </button>
+
     <button type="submit" [disabled]="newUser.password !== confirmPassword || newUser.username.length === 0">
         Opslaan
     </button>

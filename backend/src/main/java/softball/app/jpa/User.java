@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "`user`")
@@ -34,6 +35,9 @@ public class User {
     @Enumerated(jakarta.persistence.EnumType.STRING)
     @Column
     private Role role;
+
+    @Transient
+    private String coachCode;
 
     public User() {
     }
@@ -92,6 +96,14 @@ public class User {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public String getCoachCode() {
+        return coachCode;
+    }
+
+    public void setCoachCode(String coachCode) {
+        this.coachCode = coachCode;
     }
 
     @Override

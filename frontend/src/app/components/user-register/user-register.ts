@@ -25,7 +25,8 @@ export class UserRegister {
     firstName: '',
     lastName: '',
     password: '',
-    role: 'PLAYER'
+    role: 'PLAYER',
+    coachCode: ''
   }
 
   saveUser() {
@@ -38,7 +39,8 @@ export class UserRegister {
           firstName: '',
           lastName: '',
           password: '',
-          role: 'PLAYER'
+          role: 'PLAYER',
+          coachCode: ''
         }
         this.authService.setUser(savedUser);
         this.router.navigate(['/home']);

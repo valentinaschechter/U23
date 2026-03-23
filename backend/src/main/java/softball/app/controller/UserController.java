@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import softball.app.dto.LoginDTO;
+import softball.app.jpa.Role;
 import softball.app.jpa.User;
 import softball.app.repository.UserRepository;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,8 +45,17 @@ public class UserController {
         if (user.getUsername() != null) {
             user.setUsername(user.getUsername().trim());
         }
+        if ("COACH".equals(user.getRole())) {
+            String ingevuldeCode = user.getCoachCode();
+            String geheimeCode = "U23-COACH-SOFTBALL";
 
-        System.out.println("New user added: " + user.getFirstName());
+            if (!geheimeCode.equals(ingevuldeCode)) {
+                System.out.println("WAARSCHUWING: Foutieve coach-code van " + user.getUsername());
+                user.setRole(Role.PLAYER);
+            }
+        }
+
+        System.out.println("New user added: " + user.getFirstName() + " with role: " + user.getRole());
         return userRepository.save(user);
     }
 
@@ -53,7 +63,6 @@ public class UserController {
     public ResponseEntity<?> login(@RequestBody LoginDTO loginRequest) {
         String ingevuld = loginRequest.getPassword();
 
-        // 1. Check de lengte. Als je 'Wachtwoord' typt, moet dit 10 zijn.
         System.out.println("DEBUG: Lengte van ingevuld wachtwoord: " + (ingevuld != null ? ingevuld.length() : 0));
 
         return userRepository.findByUsername(loginRequest.getUsername())
