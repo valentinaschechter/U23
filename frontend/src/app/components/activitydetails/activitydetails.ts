@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PlanningService } from '../../service/planningService';
@@ -14,6 +14,7 @@ import { Activity } from '../../models/activity.model';
 export class Activitydetails implements OnInit {
   private route = inject(ActivatedRoute);
   private planningService = inject(PlanningService);
+  private cdr = inject(ChangeDetectorRef);
 
   activity: Activity | undefined;
 
@@ -26,6 +27,7 @@ export class Activitydetails implements OnInit {
           next: (data) => {
             this.activity = data;
             console.log("Activiteit succesvol geladen:", data);
+            this.cdr.detectChanges();
           },
           error: (err) => {
             console.error("Fout bij ophalen activiteit:", err);
