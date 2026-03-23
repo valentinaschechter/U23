@@ -1,12 +1,57 @@
 <div class="home-container">
-    @if (authService.getUser(); as loggedInUser) {
-    <h2 class="welcome-header">
-        Welkom <span class="username-highlight">{{ loggedInUser.username }}</span> op de home pagina
-    </h2>
-    <p>Klaar voor de volgende training?</p>
-    } @else {
-    <h2 class="welcome-header">Welkom, <span class="guest-msg">gast</span></h2>
-    <p>Log a.u.b. in om je planning te bekijken.</p>
-    <a routerLink="/login" class="btn-login-redirect">Naar Login</a>
+    <section class="welcome-section card p-4 mb-4 shadow-sm">
+        @if (authService.getUser(); as loggedInUser) {
+        <h2 class="welcome-header">
+            Welkom <span class="username-highlight">{{ loggedInUser.username }}</span> op de home pagina
+        </h2>
+        } @else {
+        <h2 class="welcome-header">Welkom, <span class="guest-msg">gast</span></h2>
+        <p>Log a.u.b. in om je planning te bekijken.</p>
+        <a routerLink="/login" class="btn-login-redirect">Naar Login</a>
+        }
+    </section>
+
+    @if (authService.getUser()) {
+
+    @if (authService.isCoach()) {
+    <div class="post-creator card p-3 mb-4 border-primary">
+        <h3>Nieuw bericht plaatsen 📢</h3>
+        <input type="text" [(ngModel)]="newPost.title" class="form-control mb-2" placeholder="Titel">
+        <textarea [(ngModel)]="newPost.content" class="form-control mb-2" placeholder="Je bericht..."></textarea>
+
+        <div class="form-check mb-2">
+            <input type="checkbox" id="rosterCheck" [(ngModel)]="newPost.onlyForRoster" class="form-check-input">
+            <label for="rosterCheck" class="form-check-label">🔒 Alleen voor Spelers & Coaches</label>
+        </div>
+
+        <button (click)="savePost()" class="btn btn-primary" [disabled]="!newPost.title">Posten</button>
+    </div>
+    }
+
+    <div class="post-feed">
+        <h3 class="mb-3">Laatste updates</h3>
+        @for (post of posts(); track post.id) {
+        <div class="post-card card mb-3 shadow-sm" [class.roster-only]="post.onlyForRoster">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <h4 class="card-title">{{ post.title }}</h4>
+                    @if (post.onlyForRoster) {
+                    <span class="badge bg-warning text-dark">TEAM ONLY</span>
+                    }
+                </div>
+                <p class="card-text">{{ post.content }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <small class="text-muted">Door: {{ post.author }} | {{ post.createdAt | date:'dd-MM HH:mm'
+                        }}</small>
+                    @if (authService.isCoach()) {
+                    <button (click)="onDelete(post.id)" class="btn btn-sm btn-outline-danger">🗑️</button>
+                    }
+                </div>
+            </div>
+        </div>
+        } @empty {
+        <p class="text-muted italic">Nog geen nieuwsberichten gevonden.</p>
+        }
+    </div>
     }
 </div>

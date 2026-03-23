@@ -6,7 +6,7 @@
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     text-align: center;
-    border-left: 10px solid #ffed00; /* Geel accent aan de zijkant */
+    border-left: 10px solid #ffed00;
 }
 
 .welcome-header {
@@ -17,7 +17,7 @@
 }
 
 .username-highlight {
-    color: #e30613; /* Belgisch Rood voor de naam */
+    color: #e30613;
     font-weight: 800;
     border-bottom: 3px solid #e30613;
 }
@@ -42,4 +42,28 @@
 .btn-login-redirect:hover {
     background-color: #e30613;
     color: #fff;
+}
+
+.welcome-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border: none;
+}
+
+.post-card {
+    border-left: 5px solid #007bff;
+}
+
+.post-card.roster-only {
+    border-left-color: #ffc107;
+    background-color: #fffef0;
+}
+
+.post-creator {
+    background-color: #ffffff;
+    border: 2px dashed #007bff;
+}
+
+.username-highlight {
+    color: #007bff;
+    font-weight: bold;
 }
