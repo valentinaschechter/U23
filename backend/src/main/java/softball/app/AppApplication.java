@@ -31,10 +31,17 @@ public class AppApplication {
 	@Primary
 	@Order(Ordered.HIGHEST_PRECEDENCE)
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		System.out.println("DEBUG: SecurityFilterChain BEAN WORDT NU GEMAAKT!");
+		System.out.println("DEBUG: SecurityFilterChain BEAN WORDT NU GEMAAKT MET CORS FIX!");
 		return http
-				.cors(cors -> {
-				})
+				.cors(cors -> cors.configurationSource(request -> {
+					var corsConfiguration = new org.springframework.web.cors.CorsConfiguration();
+					corsConfiguration
+							.setAllowedOrigins(java.util.List.of("https://softballu23.eu", "http://softballu23.eu"));
+					corsConfiguration.setAllowedMethods(java.util.List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+					corsConfiguration.setAllowedHeaders(java.util.List.of("*"));
+					corsConfiguration.setAllowCredentials(true);
+					return corsConfiguration;
+				}))
 				.csrf(AbstractHttpConfigurer::disable)
 				.authorizeHttpRequests(auth -> auth
 						.anyRequest().permitAll())
