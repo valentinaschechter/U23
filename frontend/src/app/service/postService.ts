@@ -46,6 +46,15 @@ export class PostService {
     }
 
     deletePost(id: number): Observable<void> {
-        return this.http.delete<void>(`${this.apiUrl}/${id}`);
+        const user = this.authService.getUser();
+        const role = user ? user.role : '';
+
+        const headers = new HttpHeaders({
+            'Authorization': `Bearer ${role}`
+        });
+
+        console.log("DEBUG: Delete versturen met rol:", role);
+
+        return this.http.delete<void>(`${this.apiUrl}/${id}`, { headers });
     }
 }

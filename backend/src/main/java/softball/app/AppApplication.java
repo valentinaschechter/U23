@@ -46,6 +46,7 @@ public class AppApplication {
 					config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
 					config.setAllowedHeaders(List.of("*"));
 					config.setAllowCredentials(true);
+					config.setExposedHeaders(java.util.List.of("Authorization"));
 					return config;
 				}))
 
@@ -56,8 +57,9 @@ public class AppApplication {
 				.authorizeHttpRequests(auth -> auth
 						.requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 						.requestMatchers(HttpMethod.GET, "/api/posts/**").permitAll()
-						.requestMatchers(HttpMethod.POST, "/api/posts/**").hasAnyAuthority("COACH")
+						.requestMatchers(HttpMethod.DELETE, "/api/posts/{id}").hasAnyAuthority("COACH")
 						.requestMatchers(HttpMethod.DELETE, "/api/posts/**").hasAnyAuthority("COACH")
+						.requestMatchers(HttpMethod.POST, "/api/posts/**").hasAnyAuthority("COACH")
 						.anyRequest().permitAll())
 				.build();
 	}
