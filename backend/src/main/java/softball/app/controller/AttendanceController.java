@@ -13,7 +13,7 @@ import softball.app.jpa.Attendance;
 import softball.app.repository.AttendanceRepository;
 
 @RestController
-@RequestMapping("/api/attendance")
+@RequestMapping("/attendance")
 public class AttendanceController {
 
     private final AttendanceRepository attendanceRepository;

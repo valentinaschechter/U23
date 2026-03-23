@@ -1,5 +1,12 @@
-@if (authService.getUser(); as loggedInUser) {
-<h2>Welkom, {{ loggedInUser.username }}, op de home pagina</h2>
-} @else {
-<h2>Welkom, gast, log a.u.b. in.</h2>
-}
+<div class="home-container">
+    @if (authService.getUser(); as loggedInUser) {
+    <h2 class="welcome-header">
+        Welkom <span class="username-highlight">{{ loggedInUser.username }}</span> op de home pagina
+    </h2>
+    <p>Klaar voor de volgende training?</p>
+    } @else {
+    <h2 class="welcome-header">Welkom, <span class="guest-msg">gast</span></h2>
+    <p>Log a.u.b. in om je planning te bekijken.</p>
+    <a routerLink="/login" class="btn-login-redirect">Naar Login</a>
+    }
+</div>

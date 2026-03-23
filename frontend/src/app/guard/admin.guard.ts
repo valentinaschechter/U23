@@ -8,6 +8,9 @@ export const adminGuard: CanActivateFn = (route, state) => {
 
     const user = authService.getUser();
 
+    console.log("DEBUG GUARD - User object:", user); // Wat staat hier?
+    console.log("DEBUG GUARD - Rol:", user?.role);
+
     // Check of de user bestaat EN de juiste rol heeft
     if (user && user.role === 'COACH') {
         return true;

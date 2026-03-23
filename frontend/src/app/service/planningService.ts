@@ -8,8 +8,8 @@ import { Attendance } from '../models/attendance.model';
     providedIn: 'root'
 })
 export class PlanningService {
-    private activityUrl = 'http://localhost:8080/api/activities';
-    private attendanceUrl = 'http://localhost:8080/api/attendance';
+    private activityUrl = 'http://jouwdomein.nl/api/activities';
+    private attendanceUrl = 'http://jouwdomein.nl/api/attendance';
 
     constructor(private http: HttpClient) { }
 

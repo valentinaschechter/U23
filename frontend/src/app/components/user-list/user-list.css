@@ -1,0 +1,87 @@
+/* --- ROSTER CONTAINER --- */
+.roster-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    color: #000;
+    border-bottom: 4px solid #ffed00; /* Geel accent */
+    display: block;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+/* --- LIST STYLING --- */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background-color: #f8f9fa;
+    border-left: 6px solid #e30613; /* Rood accent */
+    margin-bottom: 12px;
+    padding: 15px 20px;
+    border-radius: 0 8px 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s ease;
+}
+
+li:hover {
+    transform: translateX(5px);
+    background-color: #f1f1f1;
+}
+
+/* --- TEXT & ROLE STYLING --- */
+.user-info {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.role-badge {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    background-color: #000;
+    color: #ffed00;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-left: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* --- DELETE BUTTON --- */
+.btn-delete {
+    background-color: transparent;
+    color: #e30613;
+    border: 2px solid #e30613;
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-delete:hover {
+    background-color: #e30613;
+    color: #fff;
+}
+
+/* Responsiviteit */
+@media (max-width: 600px) {
+    li {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}

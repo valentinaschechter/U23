@@ -51,9 +51,20 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginDTO loginRequest) {
+        String ingevuld = loginRequest.getPassword();
+
+        // 1. Check de lengte. Als je 'Wachtwoord' typt, moet dit 10 zijn.
+        System.out.println("DEBUG: Lengte van ingevuld wachtwoord: " + (ingevuld != null ? ingevuld.length() : 0));
+
         return userRepository.findByUsername(loginRequest.getUsername())
                 .map(user -> {
-                    if (passwordEncoder.matches(loginRequest.getPassword().trim(), user.getPassword())) {
+                    // 2. Check de hash uit de DB (moet exact 60 tekens zijn voor BCrypt)
+                    System.out.println("DEBUG: DB Hash lengte: " + user.getPassword().length());
+
+                    boolean matches = passwordEncoder.matches(ingevuld, user.getPassword());
+                    System.out.println("DEBUG: MATCH RESULTAAT: " + matches);
+
+                    if (matches) {
                         return ResponseEntity.ok(user);
                     }
                     return ResponseEntity.status(401).body("Wachtwoord onjuist");

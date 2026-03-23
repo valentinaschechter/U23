@@ -1,0 +1,45 @@
+.home-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    border-left: 10px solid #ffed00; /* Geel accent aan de zijkant */
+}
+
+.welcome-header {
+    color: #000;
+    font-size: 2rem;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.username-highlight {
+    color: #e30613; /* Belgisch Rood voor de naam */
+    font-weight: 800;
+    border-bottom: 3px solid #e30613;
+}
+
+.guest-msg {
+    color: #666;
+    font-style: italic;
+}
+
+.btn-login-redirect {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: #000;
+    color: #ffed00;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn-login-redirect:hover {
+    background-color: #e30613;
+    color: #fff;
+}

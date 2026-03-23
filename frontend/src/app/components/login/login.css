@@ -1,0 +1,90 @@
+/* Container gecentreerd op de pagina */
+.login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #ffffff; /* Wit */
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    border-top: 8px solid #e30613; /* Belgisch Rood */
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    text-align: center;
+}
+
+h2 {
+    color: #000000; /* Zwart */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #ffed00; /* Geel accent */
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* Formulier styling */
+form div {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box; /* Zorgt dat padding de breedte niet verpest */
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #e30613; /* Rood bij focus */
+}
+
+/* De Login Knop */
+button {
+    width: 100%;
+    padding: 15px;
+    background-color: #000000; /* Zwart */
+    color: #ffed00; /* Geel */
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+button:hover:not(:disabled) {
+    background-color: #e30613; /* Rood bij hover */
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+button:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+
+/* Error melding */
+.error-message {
+    background-color: #ffeeee;
+    color: #e30613;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #e30613;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}

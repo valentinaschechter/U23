@@ -1,0 +1,60 @@
+nav {
+    background-color: #000; /* Zwart als basis */
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    border-bottom: 4px solid #e30613; /* Rode lijn onderaan */
+}
+
+/* Links in de nav */
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+    padding: 5px 10px;
+}
+
+nav a:hover {
+    color: #ffed00; /* Geel bij hover */
+}
+
+/* De actieve link (waar je nu bent) */
+nav a.active {
+    border-bottom: 2px solid #ffed00;
+    color: #ffed00;
+}
+
+/* Uitlog knop styling */
+nav button {
+    background-color: #e30613;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin-left: auto; /* Duwt de uitlogknop naar helemaal rechts */
+    transition: background 0.3s;
+}
+
+nav button:hover {
+    background-color: #b3050f;
+}
+
+/* De separator (|) verbergen we liever met CSS dan met tekst */
+.nav-separator {
+    color: #444;
+    user-select: none;
+}
+
+hr {
+    display: none; /* De border-bottom van de nav vervangt de hr */
+}

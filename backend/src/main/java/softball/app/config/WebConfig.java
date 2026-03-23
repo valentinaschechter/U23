@@ -9,8 +9,9 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**") // Geldt voor alle endpoints
-                .allowedOrigins("http://localhost:4200") // Geen slash aan het einde!
+        registry.addMapping("/**")
+                .allowedOriginPatterns("http://jouwdomein.nl", "https://jouwdomein.nl", "http://localhost:3000",
+                        "http://localhost*")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);
