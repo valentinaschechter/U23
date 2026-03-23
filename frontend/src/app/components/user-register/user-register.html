@@ -33,10 +33,6 @@
         [disabled]="newUser.password !== confirmPassword || newUser.username.length === 0 || (newUser.role === 'COACH' && !newUser.coachCode)">
         Opslaan
     </button>
-
-    <button type="submit" [disabled]="newUser.password !== confirmPassword || newUser.username.length === 0">
-        Opslaan
-    </button>
 </form>
 
 <hr>
