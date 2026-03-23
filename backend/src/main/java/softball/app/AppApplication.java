@@ -54,10 +54,10 @@ public class AppApplication {
 				.addFilterBefore(new SimpleAuthFilter(), UsernamePasswordAuthenticationFilter.class)
 
 				.authorizeHttpRequests(auth -> auth
+						.requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 						.requestMatchers(HttpMethod.GET, "/api/posts/**").permitAll()
 						.requestMatchers(HttpMethod.POST, "/api/posts/**").hasAnyAuthority("COACH")
 						.requestMatchers(HttpMethod.DELETE, "/api/posts/**").hasAnyAuthority("COACH")
-
 						.anyRequest().permitAll())
 				.build();
 	}
