@@ -13,6 +13,11 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+
+import java.util.List;
+import softball.app.config.SimpleAuthFilter;
 
 @SpringBootApplication(exclude = { UserDetailsServiceAutoConfiguration.class })
 @EnableWebSecurity
@@ -31,19 +36,23 @@ public class AppApplication {
 	@Primary
 	@Order(Ordered.HIGHEST_PRECEDENCE)
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		System.out.println("DEBUG: SecurityFilterChain BEAN WORDT NU GEMAAKT MET CORS FIX EN POST REGELS!");
+		System.out.println("DEBUG: SecurityFilterChain wordt geconfigureerd met SimpleAuthFilter!");
+
 		return http
 				.cors(cors -> cors.configurationSource(request -> {
-					var corsConfiguration = new org.springframework.web.cors.CorsConfiguration();
-					corsConfiguration
-							.setAllowedOrigins(java.util.List.of("https://softballu23.eu", "http://softballu23.eu",
-									"http://localhost:4200"));
-					corsConfiguration.setAllowedMethods(java.util.List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-					corsConfiguration.setAllowedHeaders(java.util.List.of("*"));
-					corsConfiguration.setAllowCredentials(true);
-					return corsConfiguration;
+					CorsConfiguration config = new CorsConfiguration();
+					config.setAllowedOrigins(
+							List.of("https://softballu23.eu", "http://softballu23.eu", "http://localhost:4200"));
+					config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+					config.setAllowedHeaders(List.of("*"));
+					config.setAllowCredentials(true);
+					return config;
 				}))
-				.csrf(crsf -> crsf.disable())
+
+				.csrf(csrf -> csrf.disable())
+
+				.addFilterBefore(new SimpleAuthFilter(), UsernamePasswordAuthenticationFilter.class)
+
 				.authorizeHttpRequests(auth -> auth
 						.requestMatchers(HttpMethod.GET, "/api/posts/**").permitAll()
 						.requestMatchers(HttpMethod.POST, "/api/posts/**").hasAnyAuthority("COACH")
