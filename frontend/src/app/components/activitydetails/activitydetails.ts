@@ -22,7 +22,7 @@ export class Activitydetails implements OnInit {
 
     if (id) {
       this.planningService.getActivities().subscribe(activities => {
-        this.activity = activities.find(a => a.id === id);
+        this.activity = activities.find(a => Number(a.id) === id);
       });
     }
   }
