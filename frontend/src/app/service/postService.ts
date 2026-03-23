@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Post } from '../models/post.model';
 import { AuthService } from './authService';
@@ -22,8 +22,26 @@ export class PostService {
     }
 
     createPost(post: Post): Observable<Post> {
-        const token = localStorage.getItem('token');
-        const headers = { 'Authorization': `Bearer ${token}` };
+        const name = "currentUser=";
+        const ca = document.cookie.split(';');
+        let userData = "";
+
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i].trim();
+            if (c.indexOf(name) === 0) {
+                userData = c.substring(name.length, c.length);
+            }
+        }
+
+        const user = userData ? JSON.parse(userData) : null;
+        const token = user ? user.role : 'ANONYMOUS';
+
+        console.log("DEBUG: We sturen deze rol mee als autorisatie:", token);
+
+        const headers = new HttpHeaders({
+            'Authorization': `Bearer ${token}`
+        });
+
         return this.http.post<Post>(this.apiUrl, post, { headers });
     }
 

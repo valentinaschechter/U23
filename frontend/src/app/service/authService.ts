@@ -27,7 +27,6 @@ export class AuthService {
     }
 
     setUser(user: User) {
-        // Sla op als cookie (verloopt bijvoorbeeld na 1 dag)
         const date = new Date();
         date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
         const expires = "expires=" + date.toUTCString();
@@ -37,7 +36,6 @@ export class AuthService {
     }
 
     logout() {
-        // Verwijder cookie door de verloopdatum in het verleden te zetten
         document.cookie = "currentUser=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         this.currentUser.set(null);
     }
