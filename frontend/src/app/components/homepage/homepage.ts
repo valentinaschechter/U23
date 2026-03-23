@@ -35,12 +35,14 @@ export class Homepage implements OnInit {
   }
 
   savePost() {
-    // Auteur invullen op basis van ingelogde gebruiker
     this.newPost.author = this.authService.getUser()?.firstName || 'Coach';
 
+    console.log("DEBUG: Dit object wordt naar de backend gestuurd:", this.newPost);
+
     this.postService.createPost(this.newPost).subscribe({
-      next: () => {
-        this.loadPosts(); // Ververs de lijst
+      next: (savedPost) => {
+        console.log("DEBUG: Antwoord van server na opslaan:", savedPost);
+        this.loadPosts();
         this.newPost = { title: '', content: '', author: '', onlyForRoster: false };
       },
       error: (err) => alert("Alleen coaches mogen berichten plaatsen!")

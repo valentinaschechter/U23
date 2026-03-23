@@ -3,6 +3,7 @@ package softball.app.controller;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,7 +37,14 @@ public class PostController {
     }
 
     @PostMapping
-    public Post createPost(@RequestBody Post post) {
+    public Post createPost(@RequestBody Post post, Authentication authentication) {
+        if (authentication == null) {
+            System.out.println("DEBUG: Er is GEEN authenticatie gevonden (null)!");
+        } else {
+            System.out.println("DEBUG: Gebruiker: " + authentication.getName());
+            System.out.println("DEBUG: Autoriteiten: " + authentication.getAuthorities());
+        }
+
         post.setCreatedAt(LocalDateTime.now());
         return postRepository.save(post);
     }

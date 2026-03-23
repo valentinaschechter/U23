@@ -47,8 +47,8 @@ public class AppApplication {
 				.csrf(AbstractHttpConfigurer::disable)
 				.authorizeHttpRequests(auth -> auth
 						.requestMatchers(HttpMethod.GET, "/api/posts/**").permitAll()
-						.requestMatchers(HttpMethod.POST, "/api/posts/**").hasRole("COACH")
-						.requestMatchers(HttpMethod.DELETE, "/api/posts/**").hasRole("COACH")
+						.requestMatchers(HttpMethod.POST, "/api/posts/**").hasAnyAuthority("COACH", "ROLE_COACH")
+						.requestMatchers(HttpMethod.DELETE, "/api/posts/**").hasAnyAuthority("COACH", "ROLE_COACH")
 
 						.anyRequest().permitAll())
 				.build();
