@@ -17,7 +17,7 @@ import softball.app.repository.AttendanceRepository;
 import softball.app.repository.UserRepository;
 
 @RestController
-@RequestMapping("/attendance")
+@RequestMapping("/api/attendance")
 public class AttendanceController {
 
     private final AttendanceRepository attendanceRepository;
