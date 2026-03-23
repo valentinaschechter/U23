@@ -22,7 +22,9 @@ export class PostService {
     }
 
     createPost(post: Post): Observable<Post> {
-        return this.http.post<Post>(this.apiUrl, post);
+        const token = localStorage.getItem('token');
+        const headers = { 'Authorization': `Bearer ${token}` };
+        return this.http.post<Post>(this.apiUrl, post, { headers });
     }
 
     deletePost(id: number): Observable<void> {
