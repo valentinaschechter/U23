@@ -1,69 +1,92 @@
 .home-container {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    text-align: center;
-    border-left: 10px solid #ffed00;
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.welcome-header {
-    color: #000;
-    font-size: 2rem;
-    text-transform: uppercase;
-    margin-bottom: 20px;
+
+.welcome-section {
+    text-align: center;
+    background-color: #fff5f5; 
+    border: 1px solid #ffcccc;
+    padding: 15px;
+    margin-bottom: 25px;
+    border-radius: 8px;
 }
 
 .username-highlight {
-    color: #e30613;
-    font-weight: 800;
-    border-bottom: 3px solid #e30613;
-}
-
-.guest-msg {
-    color: #666;
-    font-style: italic;
-}
-
-.btn-login-redirect {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 25px;
-    background-color: #000;
-    color: #ffed00;
-    text-decoration: none;
-    border-radius: 5px;
+    color: #dc3545; 
     font-weight: bold;
-    transition: background 0.3s;
-}
-
-.btn-login-redirect:hover {
-    background-color: #e30613;
-    color: #fff;
-}
-
-.welcome-section {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    border: none;
-}
-
-.post-card {
-    border-left: 5px solid #007bff;
-}
-
-.post-card.roster-only {
-    border-left-color: #ffc107;
-    background-color: #fffef0;
+    text-transform: uppercase;
 }
 
 .post-creator {
     background-color: #ffffff;
-    border: 2px dashed #007bff;
+    border: 2px solid #dc3545;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.1);
+    margin-bottom: 30px;
 }
 
-.username-highlight {
-    color: #007bff;
+.post-creator input[type="text"]:focus,
+.post-creator textarea:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.2);
+    outline: none;
+}
+
+.post-creator input[type="text"],
+.post-creator textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.btn-primary {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #dc3545; 
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.btn-primary:hover {
+    background-color: #a71d2a; 
+}
+
+.btn-primary:active {
+    transform: scale(0.98); 
+}
+
+.post-card {
+    border-left: 5px solid #dc3545; 
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.post-card.staff-only {
+    border-left-color: #ffc107; 
+    background-color: #fffdf5;
+}
+
+.btn-login-redirect {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
     font-weight: bold;
 }
