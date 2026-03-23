@@ -6,6 +6,7 @@ import { Login } from './components/login/login';
 import { Homepage } from './components/homepage/homepage';
 import { basicGuard } from './guard/basic.guard';
 import { Planning } from './components/planning/planning';
+import { Activitydetails } from './components/activitydetails/activitydetails';
 
 export const routes: Routes = [
     // no login
@@ -19,4 +20,5 @@ export const routes: Routes = [
 
     // ROLE COACH
     { path: 'admin/users', component: UserList, canActivate: [adminGuard] },
+    { path: 'planning/detail/:id', component: Activitydetails, canActivate: [adminGuard] }
 ];

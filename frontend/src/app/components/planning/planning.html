@@ -29,7 +29,8 @@
 
                 @if (authService.isCoach()) {
                 <div class="info-item attendance-count">
-                    <span class="badge" [ngClass]="getAttendanceCount(act) < 9 ? 'status-low' : 'status-ok'">
+                    <span class="badge" [ngClass]="getAttendanceCount(act) < 9 ? 'status-low' : 'status-ok'"
+                        (click)="showDetailPage(act.id)">
                         👥 {{ getAttendanceCount(act) }} aanwezig
                     </span>
                 </div>

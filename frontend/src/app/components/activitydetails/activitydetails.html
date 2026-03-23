@@ -1,0 +1,30 @@
+<div class="planning-container">
+    <button routerLink="/planning" class="btn-back">⬅ Terug naar Planning</button>
+
+    @if (activity) {
+    <h2>Details: {{ activity.title }}</h2>
+    <p>📍 {{ activity.location }} | 📅 {{ activity.dateTime | date:'dd-MM HH:mm' }}</p>
+
+    <div class="details-grid">
+        <div class="list-card present">
+            <h3>✅ Aanwezig ({{ presentList.length }})</h3>
+            <ul>
+                @for (att of presentList; track att.id) {
+                <li>{{ att.user?.firstName }} {{ att.user?.lastName }}</li>
+                } @empty { <li>Nog geen aanmeldingen</li> }
+            </ul>
+        </div>
+
+        <div class="list-card absent">
+            <h3>❌ Afwezig ({{ absentList.length }})</h3>
+            <ul>
+                @for (att of absentList; track att.id) {
+                <li>{{ att.user?.firstName }} {{ att.user?.lastName }}</li>
+                } @empty { <li>Geen afmeldingen</li> }
+            </ul>
+        </div>
+    </div>
+    } @else {
+    <p>Activiteit laden of niet gevonden...</p>
+    }
+</div>
