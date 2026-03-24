@@ -37,7 +37,7 @@ public class Attendance {
     public Attendance(User user, Activity activity, Boolean isPresent) {
         this.user = user;
         this.activity = activity;
-        this.isPresent = isPresent;
+        this.isPresent = true;
     }
 
     public Long getId() {
