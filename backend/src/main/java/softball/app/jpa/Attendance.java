@@ -28,7 +28,7 @@ public class Attendance {
     @ManyToOne
     private Activity activity;
 
-    @Column
+    @Column(columnDefinition = "boolean default true", nullable = false)
     private Boolean isPresent = true;
 
     public Attendance() {
