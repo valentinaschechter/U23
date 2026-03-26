@@ -6,7 +6,6 @@ export const basicGuard: CanActivateFn = (route, state) => {
     const authService = inject(AuthService);
     const router = inject(Router);
 
-    // Als getUser() een object teruggeeft (niet null), is de gebruiker ingelogd
     if (authService.getUser() !== null) {
         return true;
     } else {

@@ -28,7 +28,7 @@ public class Attendance {
     @ManyToOne
     private Activity activity;
 
-    @Column(columnDefinition = "boolean default true", nullable = false)
+    @Column
     private Boolean isPresent = true;
 
     public Attendance() {
@@ -37,7 +37,7 @@ public class Attendance {
     public Attendance(User user, Activity activity, Boolean isPresent) {
         this.user = user;
         this.activity = activity;
-        this.isPresent = true;
+        this.isPresent = isPresent;
     }
 
     public Long getId() {
