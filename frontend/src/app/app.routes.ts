@@ -18,9 +18,9 @@ export const routes: Routes = [
     // basic login
     { path: 'home', component: Homepage, canActivate: [basicGuard] },
     { path: 'planning', component: Planning, canActivate: [basicGuard] },
+    { path: 'drills', component: Drills, canActivate: [basicGuard] },
 
     // ROLE COACH
     { path: 'admin/users', component: UserList, canActivate: [adminGuard] },
     { path: 'planning/detail/:id', component: Activitydetails, canActivate: [adminGuard] },
-    { path: 'drills', component: Drills, canActivate: [adminGuard] },
 ];
