@@ -1,0 +1,74 @@
+.drills-container {
+    max-width: 850px;
+    margin: 30px auto;
+    padding: 25px;
+    background-color: #ffffff;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+h1 {
+    color: #1a2a6c;
+    text-align: center;
+    border-bottom: 3px solid #f0f0f0;
+    padding-bottom: 15px;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+h2 {
+    color: #007bff; /* De standaard blauwe kleur van je app */
+    background-color: #f8f9fa;
+    padding: 10px 15px;
+    border-left: 5px solid #007bff;
+    margin-top: 35px;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 5px;
+}
+
+li {
+    position: relative;
+    padding: 12px 15px 12px 30px;
+    border-bottom: 1px solid #eee;
+    transition: background 0.2s;
+}
+
+li:hover {
+    background-color: #fcfcfc;
+}
+
+/* Custom bullet puntje */
+li::before {
+    content: "⚾";
+    position: absolute;
+    left: 0;
+    font-size: 0.9rem;
+    top: 14px;
+}
+
+.drill-note {
+    font-weight: bold;
+    color: #666;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+strong {
+    color: #1a2a6c;
+}
+
+@media (max-width: 600px) {
+    .drills-container {
+        padding: 15px;
+        margin: 10px;
+    }
+}
