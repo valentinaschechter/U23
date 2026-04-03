@@ -1,14 +1,16 @@
 nav {
-    background-color: #000; /* Zwart als basis */
-    padding: 15px 30px;
     display: flex;
+    flex-wrap: wrap;           /* Zorgt dat links op mobiel naar de volgende regel springen */
     align-items: center;
-    gap: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    border-bottom: 4px solid #e30613; /* Rode lijn onderaan */
+    background-color: #000;    /* Jouw zwarte achtergrond */
+    padding: 15px;
+    width: 100%;               /* Breedte van het scherm */
+    box-sizing: border-box;    /* Zorgt dat padding de 100% breedte niet overschrijdt */
+    overflow-x: hidden;        /* Voorkomt dat de balk zelf breder wordt dan het scherm */
+    gap: 5px;                  /* Ruimte tussen de links en de '|' tekens */
 }
 
-/* Links in de nav */
+/* --- JOUW BESTAANDE LINK STYLING (Behouden) --- */
 nav a {
     color: #fff;
     text-decoration: none;
