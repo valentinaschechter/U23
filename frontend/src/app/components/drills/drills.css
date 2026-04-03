@@ -54,11 +54,6 @@ li {
     box-shadow: 0 2px 5px rgba(0,0,0,0.03);
 }
 
-li:hover {
-    border-color: #e30613; /* Rood bij hover zoals activity-cards */
-    transform: translateX(5px);
-}
-
 /* Bal-icoon of bullet punt in rood */
 li::before {
     content: "⚾";
