@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import softball.app.dto.LoginDTO;
 import softball.app.jpa.Role;
 import softball.app.jpa.User;
+import softball.app.repository.AttendanceRepository;
 import softball.app.repository.UserRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,12 +21,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
+    private final AttendanceRepository attendanceRepository;
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public UserController(UserRepository userRepository, PasswordEncoder pe) {
+    public UserController(UserRepository userRepository, PasswordEncoder pe,
+            AttendanceRepository attendanceRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = pe;
+        this.attendanceRepository = attendanceRepository;
     }
 
     @GetMapping("/")
@@ -84,6 +88,8 @@ public class UserController {
     @DeleteMapping("{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         if (userRepository.existsById(id)) {
+            User user = userRepository.findById(id).orElseThrow();
+            attendanceRepository.deleleteByUser(user);
             userRepository.deleteById(id);
             return ResponseEntity.noContent().build();
         } else {
