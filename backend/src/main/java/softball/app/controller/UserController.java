@@ -72,7 +72,8 @@ public class UserController {
         return userRepository.findByUsername(loginRequest.getUsername())
                 .map(user -> {
                     // 2. Check de hash uit de DB (moet exact 60 tekens zijn voor BCrypt)
-                    System.out.println("DEBUG: DB Hash lengte: " + user.getPassword().length());
+                    System.out.println(
+                            "DEBUG: DB Hash lengte: " + user.getPassword().length() + " " + user.getUsername());
 
                     boolean matches = passwordEncoder.matches(ingevuld, user.getPassword());
                     System.out.println("DEBUG: MATCH RESULTAAT: " + matches);
