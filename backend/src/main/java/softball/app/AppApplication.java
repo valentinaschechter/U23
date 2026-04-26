@@ -42,7 +42,8 @@ public class AppApplication {
 				.cors(cors -> cors.configurationSource(request -> {
 					CorsConfiguration config = new CorsConfiguration();
 					config.setAllowedOrigins(
-							List.of("https://softballu23.eu", "http://softballu23.eu", "http://localhost:4200"));
+							List.of("https://softballu23.eu", "http://softballu23.eu", "http://localhost:4200",
+									"https://test.softballu23.eu", "http://test.softballu23.eu"));
 					config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
 					config.setAllowedHeaders(List.of("*"));
 					config.setAllowCredentials(true);
