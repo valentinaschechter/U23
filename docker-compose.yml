@@ -76,6 +76,21 @@ services:
       - "traefik.http.services.frontend.loadbalancer.server.port=80"
       - "traefik.docker.network=proxy-net"
 
+  frontend-test:
+    build: ./frontend
+    container_name: softball_frontend_test
+    restart: always
+    networks:
+      - proxy-net
+    labels:
+      - "traefik.enable=true"
+      # HIER PAS JE HET DOMEIN AAN:
+      - "traefik.http.routers.frontend-test.rule=Host(`test.softballu23.eu`)"
+      - "traefik.http.routers.frontend-test.entrypoints=websecure"
+      - "traefik.http.routers.frontend-test.tls.certresolver=myresolver"
+      - "traefik.http.services.frontend-test.loadbalancer.server.port=80"
+      - "traefik.docker.network=proxy-net"
+
 networks:
   proxy-net:
     name: proxy-net

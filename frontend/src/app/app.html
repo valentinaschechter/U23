@@ -6,6 +6,7 @@
 
   @if (authService.isCoach()) {
   <a routerLink="/admin/users">Coach Overzicht</a> |
+  <a routerLink="/reflectie">Reflectie</a> |
   }
 
   <button (click)="logout()">Uit loggen ({{ authService.getUser()?.username }})</button>
