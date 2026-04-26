@@ -56,7 +56,7 @@ services:
       - backend-net
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.backend.rule=(Host(`${DOMAIN}`) || (`test.softballu23.eu`))&& PathPrefix(`/api`)"
+      - "traefik.http.routers.backend.rule=(Host(`${DOMAIN}`) || Host(`test.softballu23.eu`))&& PathPrefix(`/api`)"
       - "traefik.http.routers.backend.entrypoints=websecure" # Gebruik HTTPS
       - "traefik.http.routers.backend.tls.certresolver=myresolver" # Activeer SSL
       - "traefik.http.services.backend.loadbalancer.server.port=8080"
