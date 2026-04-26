@@ -77,7 +77,7 @@ services:
       - "traefik.docker.network=proxy-net"
 
   frontend-test:
-    build: ./test-frontend/U23/frontend
+    build: ./frontend
     container_name: softball_frontend_test
     restart: always
     networks:
