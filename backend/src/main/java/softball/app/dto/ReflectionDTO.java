@@ -34,6 +34,9 @@ public class ReflectionDTO {
     @Size(max = 1000, message = "Feedback mag niet langer zijn dan 1000 tekens")
     private String feedback;
 
+    @Size(max = 1000, message = "Positief ding van de dag mag niet langer zijn dan 1000 tekens")
+    private String positiveNote;
+
     public ReflectionDTO() {
     }
 
@@ -99,5 +102,13 @@ public class ReflectionDTO {
 
     public void setFeedback(String feedback) {
         this.feedback = feedback;
+    }
+
+    public String getPositiveNote() {
+        return positiveNote;
+    }
+
+    public void setPositiveNote(String positiveNote) {
+        this.positiveNote = positiveNote;
     }
 }

@@ -6,6 +6,7 @@ export interface ReflectionRequest {
     groupenergy: number;
     learning: number;
     feedback: string;
+    positiveNote: string;
 }
 
 export interface ReflectionResponse {
@@ -18,6 +19,7 @@ export interface ReflectionResponse {
     groupenergy: number;
     learning: number;
     feedback: string;
+    positiveNote: string;
     player?: {
         firstName: string;
         lastName: string;

@@ -52,6 +52,17 @@
             }
         </div>
 
+        <div class="input-group">
+            <label for="positiveNote">Wat ging er vandaag echt goed?</label>
+            <textarea id="positiveNote" formControlName="positiveNote" class="form-control"
+                placeholder="Bijvoorbeeld: 'Mijn sliding was perfect'...">
+    </textarea>
+
+            @if (reflectionform.get('positiveNote')?.invalid && reflectionform.get('positiveNote')?.touched) {
+            <small class="error-text">De opmerking is te lang.</small>
+            }
+        </div>
+
         <button type="submit" class="btn-submit" [disabled]="reflectionform.invalid">
             Verstuur naar Staff
         </button>

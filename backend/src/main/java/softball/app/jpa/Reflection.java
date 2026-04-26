@@ -66,11 +66,14 @@ public class Reflection {
     @Column(length = 1000)
     private String feedback;
 
+    @Column(columnDefinition = "TEXT")
+    private String positiveNote;
+
     public Reflection() {
     }
 
     public Reflection(User player, int rpe, int focus, int selfworth, int groupfeeling,
-            int groupenergy, int learning, String feedback) {
+            int groupenergy, int learning, String feedback, String positiveNote) {
         this.player = player;
         this.rpe = rpe;
         this.focus = focus;
@@ -79,6 +82,7 @@ public class Reflection {
         this.groupenergy = groupenergy;
         this.learning = learning;
         this.feedback = feedback;
+        this.positiveNote = positiveNote;
     }
 
     public long getId() {
@@ -155,5 +159,13 @@ public class Reflection {
 
     public void setFeedback(String feedback) {
         this.feedback = feedback;
+    }
+
+    public String getPositiveNote() {
+        return positiveNote;
+    }
+
+    public void setPositiveNote(String positiveNote) {
+        this.positiveNote = positiveNote;
     }
 }
