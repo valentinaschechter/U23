@@ -41,7 +41,20 @@ services:
     networks:
       - backend-net
 
+  db-test:
+    image: mysql:8.0 # Match productie engine
+    container_name: softball_db_test
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: softball_test
+      MYSQL_USER: zeb
+      MYSQL_PASSWORD: ${MYSQL_USER_PASSWORD}
+    networks:
+      - backend-net
+
   backend:
+    # Dit is je productie backend
     build: ./backend
     container_name: softball_backend
     restart: always
@@ -56,10 +69,32 @@ services:
       - backend-net
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.backend.rule=(Host(`${DOMAIN}`) || Host(`test.softballu23.eu`)) && PathPrefix(`/api`)"
-      - "traefik.http.routers.backend.entrypoints=websecure" # Gebruik HTTPS
-      - "traefik.http.routers.backend.tls.certresolver=myresolver" # Activeer SSL
+      - "traefik.http.routers.backend.rule=Host(`${DOMAIN}`) && PathPrefix(`/api`)"
+      - "traefik.http.routers.backend.entrypoints=websecure"
+      - "traefik.http.routers.backend.tls.certresolver=myresolver"
       - "traefik.http.services.backend.loadbalancer.server.port=8080"
+      - "traefik.docker.network=proxy-net"
+
+  backend-test:
+    # Dit is je TEST backend
+    build: ./backend
+    container_name: softball_backend_test
+    restart: always
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-test:3306/softball_test
+      - SPRING_DATASOURCE_USERNAME=zeb
+      - SPRING_DATASOURCE_PASSWORD=${MYSQL_USER_PASSWORD}
+    depends_on:
+      - db-test
+    networks:
+      - proxy-net
+      - backend-net
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.backend-test.rule=Host(`test.softballu23.eu`) && PathPrefix(`/api`)"
+      - "traefik.http.routers.backend-test.entrypoints=websecure"
+      - "traefik.http.routers.backend-test.tls.certresolver=myresolver"
+      - "traefik.http.services.backend-test.loadbalancer.server.port=8080"
       - "traefik.docker.network=proxy-net"
 
   frontend:

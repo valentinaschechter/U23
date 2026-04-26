@@ -1,0 +1,63 @@
+<div class="reflection-container">
+    <h2>Training Reflectie</h2>
+    <p class="subtitle">Nationale Ploeg Softball - Post-Training Monitor</p>
+
+    <form [formGroup]="reflectionform" (ngSubmit)="onSubmit()" class="reflection-form">
+
+        <div class="input-group">
+            <label for="rpe">Fysieke Intensiteit (RPE)</label>
+            <select id="rpe" formControlName="rpe" class="form-select">
+                @for (n of [1,2,3,4,5,6,7,8,9,10]; track n) {
+                <option [value]="n">{{n}}</option>
+                }
+            </select>
+            <span class="help-text">1: Zeer licht | 10: Maximale inspanning</span>
+        </div>
+
+        <div class="form-row">
+            <div class="input-group half">
+                <label for="focus">Focus & Concentratie</label>
+                <select id="focus" formControlName="focus" class="form-select">
+                    @for (n of [1,2,3,4,5]; track n) {
+                    <option [value]="n">{{n}}</option>
+                    }
+                </select>
+            </div>
+
+            <div class="input-group half">
+                <label for="selfworth">Eigen Gevoel (Vorm)</label>
+                <select id="selfworth" formControlName="selfworth" class="form-select">
+                    @for (n of [1,2,3,4,5]; track n) {
+                    <option [value]="n">{{n}}</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label for="groupfeeling">Teamcohesie (Groei)</label>
+            <select id="groupfeeling" formControlName="groupfeeling" class="form-select">
+                @for (n of [1,2,3,4,5]; track n) {
+                <option [value]="n">{{n}}</option>
+                }
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label>Feedback voor de coachingstaff</label>
+            <textarea formControlName="feedback" placeholder="Wat kunnen we verbeteren?"></textarea>
+
+            @if (reflectionform.get('feedback')?.invalid && reflectionform.get('feedback')?.touched) {
+            <small class="error-text">Feedback is te lang (max. 1000 tekens).</small>
+            }
+        </div>
+
+        <button type="submit" class="btn-submit" [disabled]="reflectionform.invalid">
+            Verstuur naar Staff
+        </button>
+
+        @if (submitted && reflectionform.valid) {
+        <p class="success-msg">Bedankt! Je reflectie is verzonden.</p>
+        }
+    </form>
+</div>
