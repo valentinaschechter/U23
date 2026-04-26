@@ -44,22 +44,22 @@
         </div>
 
         <div class="input-group">
+            <label for="positiveNote">Wat ging er vandaag echt goed?</label>
+            <textarea id="positiveNote" formControlName="positiveNote" class="form-control"
+                placeholder="Bijvoorbeeld: 'Mijn sliding was perfect'...">
+            </textarea>
+
+            @if (reflectionform.get('positiveNote')?.invalid && reflectionform.get('positiveNote')?.touched) {
+            <small class="error-text">De opmerking is te lang.</small>
+            }
+        </div>
+
+        <div class="input-group">
             <label>Feedback voor de coachingstaff</label>
             <textarea formControlName="feedback" placeholder="Wat kunnen we verbeteren?"></textarea>
 
             @if (reflectionform.get('feedback')?.invalid && reflectionform.get('feedback')?.touched) {
             <small class="error-text">Feedback is te lang (max. 1000 tekens).</small>
-            }
-        </div>
-
-        <div class="input-group">
-            <label for="positiveNote">Wat ging er vandaag echt goed?</label>
-            <textarea id="positiveNote" formControlName="positiveNote" class="form-control"
-                placeholder="Bijvoorbeeld: 'Mijn sliding was perfect'...">
-    </textarea>
-
-            @if (reflectionform.get('positiveNote')?.invalid && reflectionform.get('positiveNote')?.touched) {
-            <small class="error-text">De opmerking is te lang.</small>
             }
         </div>
 

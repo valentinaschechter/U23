@@ -1,0 +1,54 @@
+.dashboard-container {
+    padding: 20px;
+    background: #f8f9fa;
+}
+
+.dashboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+th {
+    background: #333;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.status-critical {
+    color: white;
+    background: #e63946;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.status-warning {
+    color: #333;
+    background: #f7ce00;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.status-ok {
+    color: white;
+    background: #2a9d8f;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.note-cell {
+    font-style: italic;
+    color: #555;
+    max-width: 300px;
+}

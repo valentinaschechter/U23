@@ -1,0 +1,30 @@
+<div class="dashboard-container">
+    <h2>Coach Dashboard - Team Monitor</h2>
+
+    <table class="dashboard-table">
+        <thead>
+            <tr>
+                <th>Speelster</th>
+                <th>Datum</th>
+                <th>RPE</th>
+                <th>Focus</th>
+                <th>Energie</th>
+                <th>Wat ging goed?</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (ref of reflections; track ref.id) {
+            <tr>
+                <td><strong>{{ ref.player?.firstName }} {{ref.player?.lastName}}</strong></td>
+                <td>{{ ref.submissionDate | date:'dd/MM HH:mm' }}</td>
+                <td>
+                    <span [ngClass]="getRpeClass(ref.rpe)">{{ ref.rpe }}</span>
+                </td>
+                <td>{{ ref.focus }}/5</td>
+                <td>{{ ref.groupenergy }}/5</td>
+                <td class="note-cell">{{ ref.positiveNote }}</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
