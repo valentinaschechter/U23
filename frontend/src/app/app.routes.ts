@@ -9,6 +9,7 @@ import { Planning } from './components/planning/planning';
 import { Activitydetails } from './components/activitydetails/activitydetails';
 import { Drills } from './components/drills/drills';
 import { Comingsoon } from './components/comingsoon/comingsoon';
+import { Reflectionform } from './components/reflectionform/reflectionform';
 
 export const routes: Routes = [
     // no login
@@ -20,9 +21,9 @@ export const routes: Routes = [
     { path: 'home', component: Homepage, canActivate: [basicGuard] },
     { path: 'planning', component: Planning, canActivate: [basicGuard] },
     { path: 'drills', component: Drills, canActivate: [basicGuard] },
+    { path: 'reflectie', component: Reflectionform, canActivate: [basicGuard] },
 
     // ROLE COACH
     { path: 'admin/users', component: UserList, canActivate: [adminGuard] },
     { path: 'planning/detail/:id', component: Activitydetails, canActivate: [adminGuard] },
-    { path: 'reflectie', component: Comingsoon, canActivate: [adminGuard] },
 ];
