@@ -61,6 +61,10 @@ public class AppApplication {
 						.requestMatchers(HttpMethod.DELETE, "/api/posts/{id}").hasAnyAuthority("COACH")
 						.requestMatchers(HttpMethod.DELETE, "/api/posts/**").hasAnyAuthority("COACH")
 						.requestMatchers(HttpMethod.POST, "/api/posts/**").hasAnyAuthority("COACH")
+						.requestMatchers(HttpMethod.POST, "/api/posts/**").hasAnyAuthority("COACH")
+						.requestMatchers(HttpMethod.POST, "/api/reflections").permitAll()
+						.requestMatchers("/api/reflections/summary").hasAnyAuthority("COACH")
+						.requestMatchers("/api/reflections/player/**").hasAnyAuthority("COACH")
 						.anyRequest().permitAll())
 				.build();
 	}
