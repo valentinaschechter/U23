@@ -29,7 +29,7 @@ public class ReflectionController {
         this.reflectionRepository = reflectionRepository;
     }
 
-    @PostMapping
+    @PostMapping("/new")
     public ResponseEntity<String> submitReflection(@Valid @RequestBody ReflectionDTO reflectionDTO) {
         try {
             reflectionService.saveReflection(reflectionDTO);

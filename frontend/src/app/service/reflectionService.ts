@@ -14,7 +14,7 @@ export class ReflectionService {
     constructor(private http: HttpClient) { }
 
     submitReflection(reflection: ReflectionRequest): Observable<string> {
-        return this.http.post(this.apiUrl, reflection, { responseType: 'text' });
+        return this.http.post(`${this.apiUrl}/new`, reflection, { responseType: 'text' });
     }
 
     getTeamSummary(): Observable<ReflectionResponse[]> {

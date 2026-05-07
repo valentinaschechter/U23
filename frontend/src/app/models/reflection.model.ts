@@ -1,4 +1,5 @@
 export interface ReflectionRequest {
+    playerId: number;
     rpe: number;
     focus: number;
     selfworth: number;
@@ -10,7 +11,7 @@ export interface ReflectionRequest {
 }
 
 export interface ReflectionResponse {
-    id: number;
+    playerId: number;
     submissionDate: Date | string;
     rpe: number;
     focus: number;

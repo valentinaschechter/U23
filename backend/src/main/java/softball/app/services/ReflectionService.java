@@ -37,6 +37,7 @@ public class ReflectionService {
         reflection.setGroupenergy(dto.getGroupenergy());
         reflection.setLearning(dto.getLearning());
         reflection.setFeedback(dto.getFeedback());
+        reflection.setPositiveNote(dto.getPositiveNote());
 
         reflectionRepository.save(reflection);
     }
