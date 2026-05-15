@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import jakarta.validation.Valid;
 import softball.app.dto.ReflectionDTO;
 import softball.app.jpa.Reflection;
 import softball.app.repository.ReflectionRepository;
@@ -29,8 +28,8 @@ public class ReflectionController {
         this.reflectionRepository = reflectionRepository;
     }
 
-    @PostMapping("/new")
-    public ResponseEntity<String> submitReflection(@Valid @RequestBody ReflectionDTO reflectionDTO) {
+    @PostMapping
+    public ResponseEntity<String> submitReflection(@RequestBody ReflectionDTO reflectionDTO) {
         try {
             reflectionService.saveReflection(reflectionDTO);
             return ResponseEntity.status(HttpStatus.CREATED).body("Reflectie succesvol opgeslagen!");
