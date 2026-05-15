@@ -18,7 +18,7 @@ import softball.app.repository.ReflectionRepository;
 import softball.app.services.ReflectionService;
 
 @RestController
-@RequestMapping("/reflections")
+@RequestMapping("/api/reflections")
 @CrossOrigin("https://test.softballu23.eu")
 public class ReflectionController {
 

@@ -20,7 +20,6 @@ export const routes: Routes = [
     { path: 'home', component: Homepage, canActivate: [basicGuard] },
     { path: 'planning', component: Planning, canActivate: [basicGuard] },
     { path: 'drills', component: Drills, canActivate: [basicGuard] },
-
     { path: 'reflections', component: ReflectionContainer, canActivate: [basicGuard] },
 
     // ROLE COACH
