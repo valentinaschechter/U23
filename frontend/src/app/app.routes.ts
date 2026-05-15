@@ -21,7 +21,7 @@ export const routes: Routes = [
     { path: 'planning', component: Planning, canActivate: [basicGuard] },
     { path: 'drills', component: Drills, canActivate: [basicGuard] },
 
-    { path: 'reflectie', component: ReflectionContainer, canActivate: [basicGuard] },
+    { path: 'reflections', component: ReflectionContainer, canActivate: [basicGuard] },
 
     // ROLE COACH
     { path: 'admin/users', component: UserList, canActivate: [adminGuard] },
