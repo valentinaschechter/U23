@@ -3,7 +3,6 @@ package softball.app.controller;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,7 +19,7 @@ import softball.app.services.ReflectionService;
 
 @RestController
 @RequestMapping("/api/reflections")
-@CrossOrigin("https://test.softballu23.eu")
+@CrossOrigin(origins = "https://test.softballu23.eu")
 public class ReflectionController {
 
     private final ReflectionService reflectionService;
@@ -33,15 +32,13 @@ public class ReflectionController {
 
     @PostMapping
     public ResponseEntity<String> submitReflection(@RequestBody ReflectionDTO reflectionDTO) {
-        return ResponseEntity.status(200).build();
-        // try {
-        // reflectionService.saveReflection(reflectionDTO);
-        // return ResponseEntity.status(HttpStatus.CREATED).body("Reflectie succesvol
-        // opgeslagen!");
-        // } catch (Exception e) {
-        // return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-        // .body("Er is iets fout gegaan bij het opslaan: " + e.getMessage());
-        // }
+        try {
+            reflectionService.saveReflection(reflectionDTO);
+            return ResponseEntity.status(HttpStatus.CREATED).body("Reflectie succesvol opgeslagen!");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Er is iets fout gegaan bij het opslaan: " + e.getMessage());
+        }
     }
 
     @GetMapping("/summary")
