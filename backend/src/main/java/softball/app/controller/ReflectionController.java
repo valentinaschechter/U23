@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,7 +18,8 @@ import softball.app.repository.ReflectionRepository;
 import softball.app.services.ReflectionService;
 
 @RestController
-@RequestMapping("/api/reflections")
+@RequestMapping("/reflections")
+@CrossOrigin("https://test.softballu23.eu")
 public class ReflectionController {
 
     private final ReflectionService reflectionService;
