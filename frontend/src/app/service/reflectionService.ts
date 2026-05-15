@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
 })
 export class ReflectionService {
 
-    private readonly apiUrl = `${environment.apiUrl}/api/reflections`;
+    private apiUrl = 'https://test.softballu23.eu/api/reflections';
 
     constructor(private http: HttpClient) { }
 
