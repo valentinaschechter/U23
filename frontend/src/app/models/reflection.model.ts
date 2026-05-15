@@ -11,7 +11,7 @@ export interface ReflectionRequest {
 }
 
 export interface ReflectionResponse {
-    id: number; // dit heb ik toegevoegd
+    id: number;
     playerId: number;
     submissionDate: Date | string;
     rpe: number;

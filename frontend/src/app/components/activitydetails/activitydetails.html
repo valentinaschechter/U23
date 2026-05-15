@@ -10,7 +10,7 @@
             <h3>✅ Aanwezig ({{ presentList.length }})</h3>
             <ul>
                 @for (att of presentList; track att.id) {
-                <li>{{ att.user?.firstName }} {{ att.user?.lastName }}</li>
+                <li>{{ att.user.firstName }} {{ att.user.lastName }}</li>
                 } @empty { <li>Nog geen aanmeldingen</li> }
             </ul>
         </div>
@@ -19,7 +19,7 @@
             <h3>❌ Afwezig ({{ absentList.length }})</h3>
             <ul>
                 @for (att of absentList; track att.id) {
-                <li>{{ att.user?.firstName }} {{ att.user?.lastName }}</li>
+                <li>{{ att.user.firstName }} {{ att.user.lastName }}</li>
                 } @empty { <li>Geen afmeldingen</li> }
             </ul>
         </div>
